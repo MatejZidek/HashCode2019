@@ -2,7 +2,6 @@ from photo import Photo
 
 class File:
     def __init__(self):
-        self.photos = list()
         pass
 
     # getters & setters
@@ -11,6 +10,7 @@ class File:
         return " ".join([str(photo) for photo in self.photos])
 
     def read_input(self, filename):
+        photos = list()
         with open(filename) as f:
             # process special lines
             numPhotos = f.readline()
@@ -20,7 +20,8 @@ class File:
                 orientation = details[0]
                 numTags = details[1]
                 tags = details[2:]
-                self.photos.append(Photo(orientation, tags))
+                photos.append(Photo(orientation, tags))
+        return photos
 
 
     def write_output(self, filename):

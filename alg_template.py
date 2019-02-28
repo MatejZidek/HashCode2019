@@ -1,9 +1,9 @@
 from file_handler import File
 
 
-def process(file) -> list:
+def process(photos) -> list:
     """
-    :param file: File object
+    :param photos: List of photos object
     :return: slideshow: list of tuples in the correct format
     """
     return []
@@ -14,8 +14,8 @@ def run(filename) -> str:
     :return: output filename
     """
     f = File()
-    f.read_input()
-    slideshow = process(f)
+    photos = f.read_input(filename)
+    slideshow = process(photos)
     out_filename = "{}-out.txt".format(filename.split(".")[0])
     f.write_output(out_filename, slideshow)
     return out_filename

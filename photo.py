@@ -3,4 +3,6 @@ class Photo:
     def __init__(self, ori, tags):
         self.orientation = ori
         self.tags = tags
-    
+
+    def __str__(self):
+        return self.orientation + " " + " ".join(self.tags)

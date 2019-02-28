@@ -24,6 +24,17 @@ class File:
         return photos
 
 
-    def write_output(self, filename):
+    def write_output(self, filename, slideshow):
+        lines = list()
+        lines.append(str(len(slideshow)) + "\n")
+        for slide in slideshow:
+            if isinstance(slide, tuple):
+                lines.append(str(slide[0]) + " " + str(slide[1]) + "\n")
+            elif isinstance(slide, int):
+                lines.append(str(slide) + "\n")
+            else:
+                print("SOMETHING HAS GONE HORRIBLY WRONG")
+
+    
         with open(filename, "w") as f:
-            pass
+            f.writelines(lines)

@@ -11,9 +11,7 @@ class Photo:
         return otherPhoto.tags & self.tags
 
     def join_v_photos(self, other_h_photo):
-        joined_photo = Photo()
-        joined_photo.orientation = 'V'
-        joined_photo.tags = self.tags.union(other_h_photo.tags)
+        joined_photo = Photo("H", self.tags.union(other_h_photo.tags))
         return joined_photo
 
     def score(self, next_photo):

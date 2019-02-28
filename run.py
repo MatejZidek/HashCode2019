@@ -6,7 +6,6 @@ from photo import Photo
 
 def get_slide(photos_line):
     photos_ids = [int(i) for i in photos_line.split()]
-    print("line", photos_line, photos_ids)
     slide = photos[photos_ids[0]]
     if len(photos_ids) == 2:
         slide = slide.join_v_photos(photos[photos_ids[1]])

@@ -20,4 +20,4 @@ class Photo:
         only_self = self.tags - next_photo.tags
         only_next = next_photo.tags - self.tags
         both = self.tags.intersection(next_photo.tags)
-        return min(only_self, only_next, both)
+        return min(len(only_self), len(only_next), len(both))

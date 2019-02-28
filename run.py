@@ -1,28 +1,29 @@
 import argparse
 import importlib
 
+from photo import Photo
 
-def get_slide(photos, photos_line):
+
+def get_slide(photos_line):
     photos_ids = [int(i) for i in photos_line.split()]
+    print("line", photos_line, photos_ids)
     slide = photos[photos_ids[0]]
     if len(photos_ids) == 2:
         slide = slide.join_v_photos(photos[photos_ids[1]])
     return slide
 
 
-def get_score(photos, filename) -> int:
+def get_score(filename) -> int:
     score = 0
     with open(filename) as f:
-        try:
-            slide_count = f.readline()
-            second_slide = get_slide(photos, f.readline())
-            for i in range(2, slide_count):
-                first_slide = second_slide
-                second_slide = get_slide(photos, f.readline())
-                score += first_slide.score(second_slide)
-        except StopIteration:
-            # Only one slide
-            pass
+        slide_count = int(f.readline())
+        if slide_count == 0:
+            return score
+        second_slide = get_slide(f.readline())
+        for i in range(2, slide_count):
+            first_slide = second_slide
+            second_slide = get_slide(f.readline())
+            score += first_slide.score(second_slide)
     return score
 
 
@@ -33,4 +34,4 @@ if __name__ == '__main__':
     args = parser.parse_args()
     alg = importlib.import_module(args.alg_file)
     photos, output_file = alg.run(args.input_file)
-    print(get_score(photos, output_file))
+    print(get_score(output_file))

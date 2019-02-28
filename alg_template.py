@@ -8,6 +8,7 @@ def process(photos) -> list:
     """
     return []
 
+
 def run(filename) -> tuple:
     """
     :param filename: input filename
@@ -19,4 +20,3 @@ def run(filename) -> tuple:
     out_filename = "{}-out.txt".format(filename.split(".")[0])
     f.write_output(out_filename, slideshow)
     return photos, out_filename
-

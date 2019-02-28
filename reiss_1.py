@@ -40,7 +40,7 @@ def run(filename) -> str:
     slideshow = process(photos)
     out_filename = "{}-out.txt".format(filename.split(".")[0])
     f.write_output(out_filename, slideshow)
-    return out_filename
+    return photos, out_filename
 
 
 

@@ -8,15 +8,15 @@ def process(photos) -> list:
     """
     return []
 
-def run(filename) -> str:
+def run(filename) -> tuple:
     """
     :param filename: input filename
-    :return: output filename
+    :return: photos list, output filename
     """
     f = File()
     photos = f.read_input(filename)
     slideshow = process(photos)
     out_filename = "{}-out.txt".format(filename.split(".")[0])
     f.write_output(out_filename, slideshow)
-    return out_filename
+    return photos, out_filename
 
